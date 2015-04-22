@@ -1,22 +1,24 @@
-require_relative './luhn_validator.rb'
+require_relative '../environments.rb'
+require_relative '../lib/luhn_validator.rb'
+require 'sinatra/activerecord'
 require 'json'
 require 'openssl'
 require 'forwardable'
 
 # Credit Card class, the basis for humanity
-class CreditCard
+class CreditCard < ActiveRecord::Base
   include LuhnValidator
   extend Forwardable
 
   # instance variables with automatic getter/setter methods
-  attr_accessor :number, :expiration_date, :owner, :credit_network
+  ##attr_accessor :number, :expiration_date, :owner, :credit_network
 
-  def initialize(number, expiration_date, owner, credit_network)
-    @number = number
-    @expiration_date = expiration_date
-    @owner = owner
-    @credit_network = credit_network
-  end
+  ##def initialize(number, expiration_date, owner, credit_network)
+  ##  @number = number
+  ##  @expiration_date = expiration_date
+  ##  @owner = owner
+  ##  @credit_network = credit_network
+  ##end
 
   # returns json string
   def to_json

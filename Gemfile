@@ -5,3 +5,13 @@ gem 'sinatra'
 gem 'thin'
 gem 'json'
 gem 'sinatra-param'
+
+gem 'rake'
+
+gem 'activerecord'
+gem 'sinatra-activerecord'
+
+group :development do
+	gem 'sqlite3'
+	gem 'tux'
+end
