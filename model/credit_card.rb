@@ -4,12 +4,29 @@ require_relative '../lib/luhn_validator.rb'
 require 'json'
 require 'openssl'
 require 'forwardable'
+require 'rbnacl/libsodium'
+require 'Base64'
 
 # Credit Card class, the basis for humanity
 class CreditCard < ActiveRecord::Base
   include LuhnValidator
   extend Forwardable
-
+  
+  def key
+    ENV['DB_KEY'].dup.force_encoding Encoding::BINARY
+  end
+  
+  def number=(raw_num)
+    en_key=RbNaCl::SecretBox.new(key)
+    self.nonce=RbNaCl::Random.random_bytes(en_key.nonce_bytes)
+    self.encrypted_number=Base64.encode64(en_key.encrypt(self.nonce,raw_num))
+    self.nonce = Base64.encode64(self.nonce)
+  end
+  
+  def number
+   en_key=RbNaCl::SecretBox.new(key)
+   en_key.decrypt(Base64.decode64(self.nonce),Base64.decode64(self.encrypted_number))
+  end
   # instance variables with automatic getter/setter methods
   # attr_accessor :number, :expiration_date, :owner, :credit_network
 

@@ -1,0 +1,3 @@
+config_env do
+	set :DB_KEY, "[database encryption key]"
+	end
