@@ -9,6 +9,8 @@ gem 'rake'
 
 gem 'activerecord'
 gem 'sinatra-activerecord'
+gem 'config_env'
+gem 'rbnacl-libsodium'
 
 group :development do
   gem 'sqlite3'

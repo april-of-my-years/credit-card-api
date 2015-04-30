@@ -21,9 +21,10 @@ class CreditCardAPI < Sinatra::Base
     card_number = params[:card_number]
     halt 400 unless card_number
 
-    card = CreditCard.new(card_number, nil, nil, nil)
+    card = CreditCard.new(encrypted_number: card_number)
+    card.number = card_number
     { "card": "#{card_number}",
-      "validated": card.validate_checksum
+    #  "validated": card.validate_checksum
     }.to_json
   end
 
@@ -35,9 +36,10 @@ class CreditCardAPI < Sinatra::Base
       owner = details_json['owner']
       credit_network = details_json['credit_network']
       expiration_date = details_json['expiration_date']
-      card = CreditCard.new(number: number, expiration_date: expiration_date,
+      card = CreditCard.new(expiration_date: expiration_date,
                             credit_network: credit_network, owner: owner)
-      halt 400 unless card.validate_checksum
+      card.number = number
+      #halt 400 unless card.validate_checksum
       status 201 if card.save
     rescue
       halt 410
