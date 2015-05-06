@@ -20,3 +20,10 @@ end
 group :development, :test do
   gem 'hirb'
 end
+group :test do
+	gem 'sqlite3'
+	gem 'minitest'
+	gem 'rack'
+	gem 'rack-test'
+	gem 'rake'
+end
