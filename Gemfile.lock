@@ -48,6 +48,8 @@ GEM
       rack (>= 1.0)
       rack-test (~> 0.6.2)
       ripl (>= 0.7.0)
+    shotgun (0.9.1)
+      rack (>= 1.0)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -88,6 +90,7 @@ DEPENDENCIES
   rack-test
   rake
   rbnacl-libsodium
+  shotgun
   sinatra
   sinatra-activerecord
   sinatra-param
