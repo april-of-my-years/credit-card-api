@@ -1,0 +1,26 @@
+%form{:action => "register", :method => "post"}
+  %fieldset
+    %ol
+      %li
+        Username:
+        %input{:type => "text", :name => "username"}
+      %li
+        Email:
+        %input{:type => "email", :name => "email"}
+      %li
+        Password:
+        %input{:type => "password", :name => "password"}
+      %li
+        Password Confirm:
+        %input{:type => "password", :name => "password_confirm"}
+      %li
+        Full Name:
+        %input{:type => "text", :name => "fullname"}
+      %li
+        Address:
+        %input{:type => "text", :name => "address"}
+      %li
+        Date Of Birth:
+        %input{:type => "text", :name => "dob"}
+    %input{:type => "submit", :value => "Send"}
+

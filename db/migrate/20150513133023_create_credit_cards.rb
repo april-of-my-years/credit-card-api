@@ -1,4 +1,3 @@
-# DB Schema in English
 class CreateCreditCards < ActiveRecord::Migration
   def change
     create_table :credit_cards do |cc|
