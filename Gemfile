@@ -8,12 +8,15 @@ gem 'sinatra-param'
 gem 'rake'
 gem 'config_env'
 gem 'rbnacl-libsodium'
+gem 'rack-flash3'
 
 gem 'activerecord'
 gem 'sinatra-activerecord'
 
 gem 'protected_attributes'
 gem 'haml'
+gem 'jwt'
+gem 'pony'
 
 group :development, :test do
   gem 'sqlite3'
