@@ -21,10 +21,10 @@ gem 'rack-flash3'
 gem 'pony'
 
 gem 'rack-ssl-enforcer'
+gem 'tux'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'tux'
   gem 'hirb'
   gem 'shotgun'
 end
