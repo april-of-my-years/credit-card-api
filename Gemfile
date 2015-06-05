@@ -22,10 +22,10 @@ gem 'pony'
 
 gem 'rack-ssl-enforcer'
 gem 'tux'
+gem 'hirb'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'hirb'
   gem 'shotgun'
 end
 

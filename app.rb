@@ -8,9 +8,7 @@ require 'rack/ssl-enforcer'
 require_relative './helpers/creditcardapi_helper'
 
 configure :development, :test do
-  require 'hirb'
   ConfigEnv.path_to_config("#{__dir__}/config/config_env.rb")
-  Hirb.enable
 end
 
 # Old CLIs now on Web
@@ -24,9 +22,11 @@ class CreditCardAPI < Sinatra::Base
   end
 
   configure do
+    require 'hirb'
     use Rack::Session::Cookie, secret: settings.session_secret
     # use Rack::Session::Cookie, secret: ENV['MSG_KEY']
     use Rack::Flash, sweep: true
+    Hirb.enable
   end
 
   helpers Sinatra::Param
